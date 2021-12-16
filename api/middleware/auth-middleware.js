@@ -1,0 +1,3 @@
+checkUsernameExists
+validateRegister
+validateLogin

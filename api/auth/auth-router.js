@@ -1,7 +1,13 @@
 const router = require('express').Router();
+const {
+
+} = require('../middleware/auth-middleware');
+const { JWT_SECRET } = require('../secrets');
+
 
 router.post('/register', (req, res) => {
-  res.end('implement register, please!');
+  const { username, password } = req.body;
+  const hash = bcrypt
   /*
     IMPLEMENT
     You are welcome to build additional middlewares to help with the endpoint's functionality.
