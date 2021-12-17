@@ -9,7 +9,12 @@ function findByUsername(username) {
   return db('users').where('username', username).first();
 }
 
+function findBy(filter) {
+  return db('users').where(filter);
+}
+
 module.exports = {
   add,
   findByUsername,
+  findBy,
 };

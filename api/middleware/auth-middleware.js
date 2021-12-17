@@ -1,4 +1,4 @@
-const { findByUsername } = require('../auth/auth-model');
+const { findByUsername, findBy } = require('../auth/auth-model');
 
 const checkUsernameExists = async (req, res, next) => {
   try {
@@ -29,8 +29,7 @@ const validatePost = async (req, res, next) => {
 
 const validateLogin = async (req, res, next) => {
   try {
-    const { username } = req.body;
-    const user = await findByUsername(username);
+    const [user] = await findBy({ username: req.body.username });
     if (!user) {
       next({ status: 401, message: 'invalid credentials' });
     } else {
