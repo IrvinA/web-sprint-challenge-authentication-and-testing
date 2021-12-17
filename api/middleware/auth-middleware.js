@@ -30,10 +30,11 @@ const validatePost = async (req, res, next) => {
 const validateLogin = async (req, res, next) => {
   try {
     const { username } = req.body;
-    const existing = await findByUsername(username);
-    if (!existing) {
+    const user = await findByUsername(username);
+    if (!user) {
       next({ status: 401, message: 'invalid credentials' });
     } else {
+      req.user = user;
       next();
     }
   } catch (err) {
