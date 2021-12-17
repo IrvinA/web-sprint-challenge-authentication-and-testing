@@ -1,7 +1,7 @@
 const { JWT_SECRET } = require('../secrets');
 const jwt = require('jsonwebtoken');
 
-const restrict = (req, res, next) => {
+module.exports = (req, res, next) => {
   const token = req.headers.authorization;
 
   if (!token) {
@@ -15,8 +15,4 @@ const restrict = (req, res, next) => {
       next();
     }
   });
-};
-
-module.exports = {
-  restrict,
 };
